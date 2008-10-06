@@ -10,10 +10,12 @@
 
 #define MAX_CHARS 100
 
+#if 1
+#define FILL_SCREEN SDL_FillRect( screen, NULL, SDL_MapRGB( screen->format, \
+							0x5F, 0x67, 0 ));
+#else
 #define FILL_SCREEN SDL_BlitSurface( img, NULL, screen, NULL );
-/*
-SDL_FillRect( screen, NULL, SDL_MapRGB( screen->format, 0x5F, 0x67, 0 ));
-*/
+#endif
 
 /*Prints error to both stdout and stderr, then exit*/
 void reportError( const char msg[], ... ) {
@@ -32,8 +34,7 @@ void reportError( const char msg[], ... ) {
 int main( int argc, char *argv[] ) {
 
     SDL_Surface *screen		= NULL,
-				*infoText	= NULL,
-				*img		= NULL;
+				*infoText	= NULL;
     SDL_Event event;
     SDL_Rect pos			= { 10, 10, 200, 0 },
 			 posInfoText	= { 50, 50, 0, 0 };
@@ -58,10 +59,6 @@ int main( int argc, char *argv[] ) {
             SDL_HWSURFACE | SDL_DOUBLEBUF ))) {
         reportError( "Video mode set error:%s\n", SDL_GetError());
     }
-
-	if( NULL == ( img = SDL_LoadBMP( "dragon.bmp" ))) {
-		reportError( "Couldn't load img dragon.bmp:%s\n", SDL_GetError());
-	}
 
     if( NULL == ( font = TTF_OpenFont( "verdana.ttf", 15 ))) {
         reportError( "Can't find font:%s\n", "verdana.ttf" );

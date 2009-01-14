@@ -38,7 +38,6 @@ This file is part of the SDL_Input library
 #include <limits.h>
 
 #include <SDL/SDL.h>
-#include <SDL/SDL_ttf.h>
 
 #include "SDL_Input.h"
 

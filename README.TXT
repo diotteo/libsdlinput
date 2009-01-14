@@ -1,13 +1,23 @@
-This is the readme file. Currently, the only tested compiler is gcc (GNU
-	Compiler Collection) which can be used on every platform (needs MinGW under
-	Windows though).
+This file instructs users on how to compile and/or use SDL_Input in their own
+	projects. Currently, the only tested compiler is GCC (GNU Compiler
+	Collection) which can be used on every platform (needs MinGW under
+	Windows though). GCC can be obtained from: http://gcc.gnu.org/
 
-NOTE: Should any mistake, error or bug be found in any of SDL_Input or
-	SDL_Input_TTF files, email me at vhann3000 at gmail dot com
+Should any mistake, error or bug be found in any file shipped with SDL_Input,
+	you may email me at vhann3000 at gmail dot com
+
+Note: A more "Windows adapted" howto may be found to the following location(s):
+	http://www.newbiesparadise.com/ (Not yet available)
+
+Which is a translation of the original, french version:
+	http://www.siteduzero.com/ (Not yet available)
+
+Updated as of: 14/01/2009 (DD/MM/YYYY)
 
 Index:
 1. Compiling (GCC)
 2. Update Log
+3. TODO list
 
 ======
 1. GCC
@@ -16,31 +26,41 @@ Index:
 Note: This step is unnecessary if you use the libSDL_Input.a file provided in
 	the archive file (zip or tar depending on your system)
 
-1- Create a subfolder named (for example) SDL_Input in the source files
-	directory and extract the SDL_Input source files there.
-2- Enter that subfolder and compile SDL_Input source files as object files like
-	this:
-gcc -Wall -Wextra -ansi -pedantic -c *.c
+1- Unpack the SDL_Input archive and place all resulting files in an empty folder
+
+2- Enter the forementionned empty folder (which is now no more empty) and
+	compile SDL_Input source files as object files like this:
+	gcc -Wall -Wextra -ansi -pedantic -c *.c
+
 3- Now, use "ar" to produce the static library:
-ar rcs libSDL_Input.a *.o
-4- You're done now.
+	ar rcs libSDL_Input.a *.o
+
+4- You may now link the resulting file called libSDL_Input.a to your projects.
 
 *** Compiling your programs with the static library ***
-
 1- Place yourself in your program's sources folder
-2- Compile all source files like this:
-gcc -Wall -Wextra -ansi -pedantic -lSDL -lSDL_ttf *.c -L[libSDL_Input.a folder]
-	-lSDL_Input
+
+2- Copy/move the libSDL_Input.a file in subfolder SDL_Input (create it if it
+	doesn't exist).
+
+3- Compile all source files like this:
+	gcc -Wall -Wextra -ansi -pedantic -lSDL -lSDL_ttf *.c \
+		-L[libSDL_Input.a folder] -lSDL_Input
 Note: replace "[libSDL_Input.a folder]" by the relative path to where you put
 	the libSDL_Input.a file. Theorically, this should be "SDL_Input".
-3- If there are no error in your program, the compilation should have produced
+
+4- If there are no error in your program, the compilation should have produced
 	a file named a.out (under Linux) which is your executable.
+
 Note: you may add a "-o [executableName]" to the above compilation line to
 	choose the name of the generated executable (so it won't be named a.out).
 
 =============
-2. Update log:
+2. Update log
 =============
+
+(version 4.0.2)
+-Updated this README file with more accurate infos
 
 (version 4.0.1) 
 ---------------
@@ -52,6 +72,7 @@ Note: you may add a "-o [executableName]" to the above compilation line to
 -Splitted SDL_Input and SDL_Input_TTF;
 -Splitting those means that SDL_Input is now licenced under GNU LGPL
 	(SDL_Input_TTF is still under GNU GPL since it requires SDL_TTF);
+Nota: SDL_TTF really is licenced under GNU LGPL too, this was a mistake of mine
 -SDL_INPUT_NOTHING macro removed (no more useful since SDL_Input_EmptyString()
 	exists);
 -SDL_Input->string may now be empty (all '\0');
@@ -95,8 +116,8 @@ Note: you may add a "-o [executableName]" to the above compilation line to
 --------------------------------
 -Corrected bug which would shift the whole screen image.
 -Translated whole code from french to english.
--Changed functions' naming rules (SDL_InputFooBar() -> SDL_Input_FooBar()).
--Optimized SDL_Input-GetCursorPos() (got rid of useless malloc() call).
+-Changed functions' naming rules (i.e. SDL_InputFooBar() -> SDL_Input_FooBar()).
+-Optimized SDL_Input_GetCursorPos() (got rid of useless malloc() call).
 -Added "offset'ed" blit (input->position.w is now used).
 -Splitted functions (shortened functions which, for most, ain't more than 40
 	lines long).
@@ -118,7 +139,13 @@ Note: you may add a "-o [executableName]" to the above compilation line to
 	prefix).
 -Corrected bug about the number of bytes allocated for SDL_Input->string in
 	SDL_Input_Create().
--Corrected bug which placed a '\0' at curosr index when SDLK_RETURN was hit.
+-Corrected bug which placed a '\0' at cursor index when SDLK_RETURN was hit.
 -Corrected some minor warnings issued by gcc with SDL_Input version 1.02.
 -Added library's version macro (SDL_INPUT_VERSION).
 
+============
+3. TODO list
+============
+
+-Learn how to use GNU Make and provide makefile in archives
+-Add support for multibytes characters (therefore enabling full unicode support)

@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA */
 
 #define SDL_INPUT_TTF_MAJOR_VERSION 1
 #define SDL_INPUT_TTF_MINOR_VERSION 0
-#define SDL_INPUT_TTF_PATCHLEVEL	1
+#define SDL_INPUT_TTF_PATCHLEVEL	2
 
 #define SDL_INPUT_TTF_VERSION( X )				\
 {												\

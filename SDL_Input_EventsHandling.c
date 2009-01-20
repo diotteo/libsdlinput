@@ -221,8 +221,8 @@ static int SDL_Input_InputChar( SDL_Input *input, const SDL_Event *p_event,
 	return b_error;
 }
 
-/*Handles input. Generally speaking, it should be the only or so function
- * called by the user. Return 0 on success or -1 if it fails.*/
+/*Handles input. Theorically, you'll always use this function at least once
+ * when using SDL_Input. Return 0 on success or -1 if it fails.*/
 int SDL_Input_InputString( SDL_Input *input, SDL_Event *p_event,
 		int *p_b_destRefresh, int *p_b_exit ) {
     int	b_emptyString		= !(long)strlen( (char *)input->string ),

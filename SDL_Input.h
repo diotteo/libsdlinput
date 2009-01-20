@@ -27,7 +27,7 @@ This file is part of the SDL_Input library
  *------------
  *Author: Olivier Diotte
  *Created on: March 18th, 2008
- *Last update: Oct. 4th, 2008
+ *Last update: Jan. 15th, 2009
  */
 
 #ifndef _SDL_INPUT_H_GUARD
@@ -36,7 +36,7 @@ This file is part of the SDL_Input library
 /*version-related macros (thanks to SDL_ttf.h for guidelines)*/
 #define SDL_INPUT_MAJOR_VERSION 4
 #define SDL_INPUT_MINOR_VERSION	0
-#define SDL_INPUT_PATCHLEVEL	1
+#define SDL_INPUT_PATCHLEVEL	3
 
 #define SDL_INPUT_VERSION( X )				\
 {											\

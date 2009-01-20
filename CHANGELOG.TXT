@@ -1,0 +1,97 @@
+Updated as of: 15/01/2009 (DD/MM/YYYY)
+
+=============
+Update log
+=============
+
+(version 4.0.3)
+-Updated version in SDL_Input.h ( was still set to 4.0.1 in 4.0.2 )
+-Updated todo list
+-Added target architecture and target system to packages name
+-Moved update log from README.TXT to CHANGELOG.TXT
+-Updated documentation ( added some possible failure reasons and UBs )
+-Minor code restructuration ( no execution change )
+
+(version 4.0.2)
+-Updated this README file with more accurate infos
+
+(version 4.0.1) 
+---------------
+-Added p_b_exit parameter to function SDL_Input_InputString();
+-Added supported keys in SDL_Input_Definitions documentation page;
+
+(version 4.0.0)
+---------------
+-Splitted SDL_Input and SDL_Input_TTF;
+-Splitting those means that SDL_Input is now licenced under GNU LGPL
+	(SDL_Input_TTF is still under GNU GPL since it requires SDL_TTF);
+Nota: SDL_TTF really is licenced under GNU LGPL too, this was a mistake of mine
+-SDL_INPUT_NOTHING macro removed (no more useful since SDL_Input_EmptyString()
+	exists);
+-SDL_Input->string may now be empty (all '\0');
+-Removed SDL_Input->f() and SDL_Input->params (no more useful since unlocked
+	input can be achieved via p_event parameter (see examples for more infos));
+-Finally made those documentation pages. These are plain text files until
+	someone has the courage to make HTML pages out of these;
+-Changed most of library functions prototypes;
+-Edited this README file so lines ain't more than 80 characters long;
+
+(version 3.0.0)
+------------------------
+-Corrected licence in source files to GNU GPL (actual licence);
+-Added SDL_Input.f() and SDL_Input.params elements to control events while in
+	locking input mode (see SDL_Input_InputString documentation page for more
+	infos);
+-Fixed SDL_Input_InputString() bug when b_lockingInput was 0;
+-Rearranged versioning order in this README file;
+-Greatly improved 'unlocked input':
+-b_lockingInput parameter is now replaced by a pointer to SDL_Event ( NULL =
+	b_lockingInput of 1 );
+-SDL_Input functions won't remove events from the queue in 'unlocked' mode
+	anymore;
+-Rendered SDL_Input_ComputeOffset() function public;
+-Rewrote documentation according to all those changes;
+-Added examples pages (polling with SDL_Input, using SDL_Input.f and
+	SDL_Input.params, etc.);
+-Added SDL_Input_IsHandled() function to know if a certain event is handled by
+	SDL_Input;
+-Added SDL_INPUT_IS_PRINT() macro to know if a certain key press unicode value
+	is printable;
+-Added insert key handling (toggles between insert and crush modes);
+-Added SDL_INPUT_INSERT_MODE enum;
+-Added SDL_Input_InsertMode() function (handles insert key);
+-Reorganized code for better overall flexibility and modularity;
+
+-Unlike previously announced, SDL_Input_InputChar() is now internal use only
+	('static'). See examples documentation page for more infos.
+
+(version 2.0.0) August 15th 2008:
+--------------------------------
+-Corrected bug which would shift the whole screen image.
+-Translated whole code from french to english.
+-Changed functions' naming rules (i.e. SDL_InputFooBar() -> SDL_Input_FooBar()).
+-Optimized SDL_Input_GetCursorPos() (got rid of useless malloc() call).
+-Added "offset'ed" blit (input->position.w is now used).
+-Splitted functions (shortened functions which, for most, ain't more than 40
+	lines long).
+-Grouped most parameters into SDL_Input structure.
+-Corrected: cursor could move when string is emptied (one space character
+	blitted).
+-Added html pages documentation.
+-Added this readme file.
+-Added this update log.
+-Calling SDL_Input_InputString() now empties string.
+-Placed the library under the GNU GPL licence (since it needs SDL_TTF, I had no
+	choice anyway).
+
+(version 1.03) June 26th 2008:
+-----------------------------
+-Changed file names (SDL_input -> SDL_Input) which caused users problems because
+	of the case of "Input".
+-Everything relative to the SDL_Input library is now named after it (SDL_Input
+	prefix).
+-Corrected bug about the number of bytes allocated for SDL_Input->string in
+	SDL_Input_Create().
+-Corrected bug which placed a '\0' at cursor index when SDLK_RETURN was hit.
+-Corrected some minor warnings issued by gcc with SDL_Input version 1.02.
+-Added library's version macro (SDL_INPUT_VERSION).

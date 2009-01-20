@@ -1,0 +1,25 @@
+SDL_Input_Free
+
+Name
+	SDL_Input_Free -- Frees an allocated SDL_Input structure
+
+Synopsis
+	#include "SDL_Input.h"
+	void SDL_Input_Free( SDL_Input* input );
+
+Description
+	This function frees input->string and set it to NULL.
+	Then, it frees input and set it to NULL.
+
+Undefined Behaviour (UB)
+	The behaviour is undefined if one of the following occurs:
+		-Pointer passed evaluates to something else than NULL or result of
+			function SDL_Input_Create();
+		-input->string evaluates to something else than NULL or any value set
+			by the SDL_Input library
+
+Possible failure reasons
+	<None>
+
+See also
+	SDL_Input_Create, Definitions

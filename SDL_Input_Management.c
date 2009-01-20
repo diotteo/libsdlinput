@@ -43,13 +43,13 @@ SDL_Input* SDL_Input_Create( long maxChars ) {
 
     SDL_Input *input = NULL;
     if( NULL != ( input = malloc( sizeof( SDL_Input )))) {
-        if( NULL != ( input->string = malloc( maxChars *
-				sizeof( *input->string ) + 1 ))) {
+		input->string = malloc( maxChars * sizeof( *input->string ) + 1 );
+        if( NULL == input->string ) {
+            SDL_Input_Free( input ), input = NULL;
+        } else {
             input->cursorIndex	= 0;
 			input->maxChars		= maxChars;
 			SDL_Input_EmptyString( input );
-        } else {
-            SDL_Input_Free( input ), input = NULL;
         }
     }
 
